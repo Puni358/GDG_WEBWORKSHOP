@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>GDG UVCE — Web Development Workshop</title>
+<meta name="description" content="A free, hands-on web development workshop from GDG on Campus, UVCE. Learn HTML, CSS, JavaScript and deployment, and ship your first live site." />
+<meta name="theme-color" content="#0a0a0a" />
+
+<link rel="icon" href="assets/logo.jpeg" />
+<link rel="apple-touch-icon" href="assets/logo.jpeg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="GDG UVCE — Web Development Workshop" />
+<meta property="og:description" content="A free, hands-on web development workshop from GDG on Campus, UVCE. Learn HTML, CSS, JavaScript and deployment, and ship your first live site." />
+<meta property="og:image" content="assets/logo.jpeg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GDG UVCE — Web Development Workshop" />
+<meta name="twitter:description" content="A free, hands-on web development workshop from GDG on Campus, UVCE." />
+<meta name="twitter:image" content="assets/logo.jpeg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- ============================ INTRO ANIMATION ============================ -->
+<section id="intro" aria-label="Intro animation">
+  <canvas id="intro-canvas"></canvas>
+  <div id="intro-logo-wrap">
+    <img id="intro-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" />
+  </div>
+  <button id="skip-intro" type="button" aria-label="Skip intro animation">Skip ›</button>
+</section>
+
+<!-- ============================ STICKY NAV ============================ -->
+<header class="site-nav" id="site-nav">
+  <a class="site-nav__brand" href="#hero">
+    <img src="assets/logo.jpeg" alt="" width="26" height="26" />
+    <span>GDG UVCE</span>
+  </a>
+  <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">Register</a>
+</header>
+
+<main id="main-content">
+
+<!-- ============================ HERO ============================ -->
+<section id="hero" aria-label="Workshop hero">
+  <img class="hero-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" width="48" height="48" />
+
+  <p class="eyebrow">GDG on Campus · UVCE</p>
+  <h1 class="hero-title">Web Development Workshop</h1>
+  <p class="hero-meta">
+    <strong id="hero-date">Loading date…</strong> · 10:00 AM onwards · <span id="hero-venue">[Venue — add your location]</span>
+  </p>
+
+  <p class="typewriter-line">
+    <span>Learn </span><span id="typewriter"></span><span class="caret" aria-hidden="true">|</span>
+  </p>
+
+  <div class="countdown" id="countdown" aria-label="Countdown to workshop">
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-days">00</span>
+      <span class="countdown__label countdown__label--blue">Days</span>
+    </div>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-hours">00</span>
+      <span class="countdown__label countdown__label--red">Hours</span>
+    </div>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-mins">00</span>
+      <span class="countdown__label countdown__label--yellow">Mins</span>
+    </div>
+    <div class="countdown__unit">
+      <span class="countdown__value" id="cd-secs">00</span>
+      <span class="countdown__label countdown__label--green">Secs</span>
+    </div>
+  </div>
+
+  <div class="btn-row cta-row">
+    <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
+      Claim your seat
+    </a>
+    <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+      Join on WhatsApp
+    </a>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span></span>
+  </div>
+</section>
+
+<!-- ============================ WHAT YOU'LL LEARN ============================ -->
+<section id="learn" aria-label="What you'll learn">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow reveal">Session</p>
+      <h2 class="section-title reveal">What you'll learn</h2>
+      <p class="section-sub reveal">Four short, hands-on stops — from a blank file to a live URL.</p>
+    </div>
+    <ol class="session-list">
+      <li class="session-row reveal">
+        <span class="session-row__num session-row__num--blue">01</span>
+        <div class="session-row__body">
+          <h3>HTML</h3>
+          <p>Structure a real page with semantic markup.</p>
+        </div>
+      </li>
+      <li class="session-row reveal">
+        <span class="session-row__num session-row__num--red">02</span>
+        <div class="session-row__body">
+          <h3>CSS</h3>
+          <p>Style and lay it out so it actually looks good.</p>
+        </div>
+      </li>
+      <li class="session-row reveal">
+        <span class="session-row__num session-row__num--yellow">03</span>
+        <div class="session-row__body">
+          <h3>JavaScript</h3>
+          <p>Add interactivity — clicks, state, simple logic.</p>
+        </div>
+      </li>
+      <li class="session-row reveal">
+        <span class="session-row__num session-row__num--green">04</span>
+        <div class="session-row__body">
+          <h3>Deployment</h3>
+          <p>Ship it to a real URL you can share.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ SPEAKERS ============================ -->
+<section id="speakers" aria-label="Speakers">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow reveal">Who's teaching</p>
+      <h2 class="section-title reveal">Meet the speakers</h2>
+    </div>
+    <div class="speaker-grid" id="speaker-grid"></div>
+  </div>
+</section>
+
+<!-- ============================ GAME ============================ -->
+<section id="game" aria-label="Catch the butterflies game">
+  <div class="container game-module">
+    <div class="section-header">
+      <p class="eyebrow reveal">While you wait</p>
+      <h2 class="section-title reveal">Catch the butterflies</h2>
+      <p class="section-sub reveal">Tap as many as you can in 20 seconds.</p>
+    </div>
+
+    <div id="game-stage" class="reveal">
+      <canvas id="game-canvas"></canvas>
+
+      <div id="game-hud" hidden>
+        <span id="game-score">Score 0</span>
+        <span id="game-timer">20s</span>
+      </div>
+
+      <div id="game-start-screen" class="game-overlay">
+        <button id="game-start-btn" class="btn btn--primary" type="button">Start the hunt</button>
+      </div>
+
+      <div id="game-end-screen" class="game-overlay" hidden>
+        <p class="game-end-label">Final score</p>
+        <p id="game-final-score">0</p>
+        <button id="game-replay-btn" class="btn btn--secondary" type="button">Play again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about" aria-label="About GDG UVCE">
+  <div class="container">
+    <div class="about-layout">
+      <img class="about-logo reveal" src="assets/logo.jpeg" alt="GDG UVCE logo" width="52" height="52" />
+      <div class="section-header" style="margin-bottom: 0;">
+        <p class="eyebrow reveal">About</p>
+        <h2 class="section-title reveal">About GDG UVCE</h2>
+      </div>
+      <p class="about-text reveal" id="about-text"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BOTTOM CTA ============================ -->
+<section id="cta" aria-label="Join us">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">Last step</p>
+      <h2 class="section-title">Ready to build your first website?</h2>
+    </div>
+    <div class="btn-row cta-row reveal">
+      <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Claim your seat
+      </a>
+      <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Join on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <div class="site-footer__brand">
+        <img src="assets/logo.jpeg" alt="" width="28" height="28" />
+        <span>GDG UVCE</span>
+      </div>
+      <p class="site-footer__tagline">The student-led chapter of Google Developer Groups at UVCE.</p>
+    </div>
+    <div class="site-footer__links">
+      <div class="site-footer__col">
+        <h4>Workshop</h4>
+        <a href="#learn">What you'll learn</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#game">Mini-game</a>
+      </div>
+      <div class="site-footer__col">
+        <h4>Join us</h4>
+        <a class="js-register-btn" href="#" target="_blank" rel="noopener noreferrer">Register</a>
+        <a class="js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">WhatsApp community</a>
+      </div>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>&copy; 2026 GDG on Campus, UVCE.</p>
+    <p>Website developed by <span id="dev-name">[Your Name]</span></p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/main.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
