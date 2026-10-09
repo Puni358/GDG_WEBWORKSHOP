@@ -125,6 +125,7 @@
         finishIntro(false);
       }
     });
+    window.__introTL = tl;
 
     // Semantic scene labels
     tl.addLabel("boot", 0)
@@ -241,41 +242,62 @@
       "assembly+=0.38"
     );
 
-    // Tactile micro-settle across the 4 quadrant shapes (2px settle simulating sticker placement)
+    // Subtle breathing settle as the final shapes complete their lock-in
     tl.to([".intro-geom--blue-pill", ".intro-geom--green-pill", ".intro-geom--yellow-stadium", ".intro-geom--red-blob"], {
-      scale: 0.98,
-      duration: 0.08,
-      yoyo: true,
-      repeat: 1,
-      ease: "power1.out"
-    }, "assembly+=0.65");
+      scale: 1,
+      duration: 0.2,
+      ease: "power2.out"
+    }, "assembly+=0.68");
 
     /* -------------------------------------------------------------------------
-       SCENE 3: STICKER MOMENT — HERO OF THE INTRO (1.85s – 3.1s)
+       SCENE 3: STICKER MOMENT — HERO OF THE INTRO (1.85s – 3.05s)
+       Fluid anticipation -> tactile entrance -> asymmetric elastic recoil
        ------------------------------------------------------------------------- */
-    // Step 1: Anticipation — surrounding geometry pauses and tenses slightly
-    tl.to(".intro-primitives", { scale: 0.97, duration: 0.14, ease: "power1.in" }, "sticker");
+    // Step 1: Fluid Anticipation — surrounding geometry smoothly cushions inward
+    // continuously from 1.85s to 2.18s (zero dead freeze, continuous deceleration)
+    tl.to(".intro-primitives", { 
+      scale: 0.965, 
+      duration: 0.33, 
+      ease: "power2.out" 
+    }, "sticker");
 
-    // Step 2: GDG Assembly Sticker drops into center stage with tactile spring overshoot
+    // Step 2: GDG Assembly Sticker drops into center stage with crisp kinetic arrival
     tl.fromTo("#intro-sticker-assembly", 
-      { scale: 0.3, rotation: -8, y: -25, opacity: 0 }, 
-      { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.62, ease: "back.out(2.3)" }, 
-      "sticker+=0.1"
+      { scale: 0.28, rotation: -7, y: -26, opacity: 0 }, 
+      { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.58, ease: "back.out(2.2)" }, 
+      "sticker+=0.06"
     );
 
-    // Step 3: Physical Impact Reaction — exact moment sticker lands (~sticker+0.32),
-    // surrounding geometry experiences an outward recoil ripple before settling
-    tl.to(".intro-geom--blue-pill", { x: -8, y: -6, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.out" }, "sticker+=0.32");
-    tl.to(".intro-geom--yellow-stadium", { x: 8, y: 6, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.out" }, "sticker+=0.32");
-    tl.to(".intro-geom--green-pill", { x: -7, y: 7, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.out" }, "sticker+=0.32");
-    tl.to(".intro-geom--red-blob", { x: 7, y: -6, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.out" }, "sticker+=0.32");
-    tl.to(".intro-primitives", { scale: 1, duration: 0.2, ease: "power2.out" }, "sticker+=0.32");
+    // Step 3: Physical Impact Recoil — triggered precisely when sticker makes contact (sticker+=0.33 = 2.18s)
+    // Parent container elastically rebounds back to rest
+    tl.to(".intro-primitives", { 
+      scale: 1, 
+      duration: 0.34, 
+      ease: "power2.out" 
+    }, "sticker+=0.33");
 
-    // Step 4: Bracket sticker joins the composition on lower-right
+    // 4 Quadrant Shapes: Asymmetric impulse response (punchy 110ms outward blast + 260ms smooth elastic return)
+    // Blue Pill (Top-Left)
+    tl.to(".intro-geom--blue-pill", { x: -8, y: -6, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
+    tl.to(".intro-geom--blue-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+
+    // Yellow Stadium (Bottom-Right)
+    tl.to(".intro-geom--yellow-stadium", { x: 8, y: 7, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
+    tl.to(".intro-geom--yellow-stadium", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+
+    // Green Pill (Bottom-Left)
+    tl.to(".intro-geom--green-pill", { x: -7, y: 7, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
+    tl.to(".intro-geom--green-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+
+    // Red Blob (Top-Right)
+    tl.to(".intro-geom--red-blob", { x: 8, y: -6, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
+    tl.to(".intro-geom--red-blob", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+
+    // Step 4: Bracket sticker joins composition on lower-right
     tl.fromTo("#intro-sticker-brackets", 
-      { scale: 0.25, rotation: 12, opacity: 0 }, 
-      { scale: 1, rotation: 0, opacity: 1, duration: 0.48, ease: "back.out(1.8)" }, 
-      "sticker+=0.25"
+      { scale: 0.22, rotation: 10, opacity: 0 }, 
+      { scale: 1, rotation: 0, opacity: 1, duration: 0.46, ease: "back.out(1.8)" }, 
+      "sticker+=0.26"
     );
 
     /* -------------------------------------------------------------------------

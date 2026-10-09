@@ -799,6 +799,8 @@ section {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .intro-svg {
@@ -838,6 +840,8 @@ section {
 .intro-geom {
   position: absolute;
   transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .intro-geom--blue-pill {
@@ -892,6 +896,8 @@ section {
   position: absolute;
   transform-origin: center center;
   filter: drop-shadow(4px 4px 0px rgba(30, 30, 30, 0.18));
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .intro-sticker--brackets {
@@ -900,6 +906,8 @@ section {
   right: 16%;
   transform-origin: center center;
   filter: drop-shadow(3px 3px 0px rgba(30, 30, 30, 0.12));
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Scene 4 & 5: Logo & Identity */
