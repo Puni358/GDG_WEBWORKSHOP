@@ -30,18 +30,97 @@
 
 <!-- ============================ INTRO ANIMATION ============================ -->
 <section id="intro" aria-label="Intro animation">
-  <canvas id="intro-canvas"></canvas>
-  <div id="intro-logo-wrap">
-    <img id="intro-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" />
+  <div class="intro-header">
+    <div class="intro-status">
+      <span class="status-indicator__dot" aria-hidden="true"></span>
+      <span class="intro-status__text">[ GDG_UVCE // BOOT ]</span>
+    </div>
+    <button id="skip-intro" type="button" aria-label="Skip intro animation">Skip ›</button>
   </div>
-  <button id="skip-intro" type="button" aria-label="Skip intro animation">Skip ›</button>
+
+  <div id="intro-stage" aria-hidden="true">
+    <!-- Boot Metadata Text (Scene 1) -->
+    <div class="intro-boot-text" id="intro-boot-text">
+      <div class="intro-boot-line intro-boot-line--1">// INITIALIZING WORKSHOP_CORE</div>
+      <div class="intro-boot-line intro-boot-line--2">{ GDG_ON_CAMPUS_UVCE }</div>
+      <div class="intro-boot-line intro-boot-line--3">* SYSTEM CONNECTED</div>
+    </div>
+
+    <!-- Curated SVG Primitives Container (Scene 1 & 2) -->
+    <div class="intro-primitives" id="intro-primitives">
+      <!-- Wireframe Globe (DrawSVG) -->
+      <svg class="intro-svg intro-svg--globe" id="intro-svg-globe" viewBox="1096 24 241 220" width="120" height="110">
+        <defs><clipPath id="globe-clip"><ellipse cx="1216" cy="134" rx="114" ry="104"/></clipPath></defs>
+        <ellipse cx="1216" cy="134" rx="114" ry="104" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="1216" cy="134" rx="49" ry="104" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <g clip-path="url(#globe-clip)">
+          <line x1="1102" y1="95" x2="1331" y2="95" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <line x1="1102" y1="172" x2="1331" y2="172" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+      </svg>
+
+      <!-- Terminal Double Slash (DrawSVG) -->
+      <svg class="intro-svg intro-svg--slash" id="intro-svg-slash" viewBox="488 279 180 204" width="70" height="80">
+        <polygon points="553,285 598,285 540,477 494,477" fill="#4285F4" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <polygon points="617,285 662,285 604,477 558,477" fill="#57CAFF" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Asterisk Operator (DrawSVG) -->
+      <svg class="intro-svg intro-svg--asterisk" id="intro-svg-asterisk" viewBox="286 279 204 204" width="70" height="70">
+        <g fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <line x1="292" y1="381" x2="484" y2="381"/>
+          <line x1="388" y1="285" x2="388" y2="477"/>
+          <line x1="320" y1="313" x2="456" y2="449"/>
+          <line x1="456" y1="313" x2="320" y2="449"/>
+        </g>
+      </svg>
+
+      <!-- Curly Braces (Left & Right) -->
+      <svg class="intro-svg intro-svg--brace-left" id="intro-svg-brace-left" viewBox="28 279 89 204" width="50" height="110">
+        <path d="M111 285 H90 Q54 285 54 321 V367 Q54 371 50 371 H38 Q34 371 34 375 V387 Q34 391 38 391 H50 Q54 391 54 395 V441 Q54 477 90 477 H111 V434 H92 Q86 434 86 428 V334 Q86 328 92 328 H111 Z" fill="#34A853" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <svg class="intro-svg intro-svg--brace-right" id="intro-svg-brace-right" viewBox="1248 279 89 204" width="50" height="110">
+        <path d="M1254 285 H1275 Q1311 285 1311 321 V367 Q1311 371 1315 371 H1327 Q1331 371 1331 375 V387 Q1331 391 1327 391 H1315 Q1311 391 1311 395 V441 Q1311 477 1275 477 H1254 V434 H1273 Q1279 434 1279 428 V334 Q1279 328 1273 328 H1254 Z" fill="#EA4335" stroke="#111" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Google Color Geometry Shapes (IMG elements) -->
+      <img class="intro-geom intro-geom--blue-pill" src="Playful SVGs and GIFs/SVGs/Blue/09_pill_horizontal_dark.svg" alt="" width="110" height="52" />
+      <img class="intro-geom intro-geom--yellow-stadium" src="Playful SVGs and GIFs/SVGs/Red/13_stadium_dark.svg" alt="" width="120" height="80" />
+      <img class="intro-geom intro-geom--green-pill" src="Playful SVGs and GIFs/SVGs/Green/01_pill_vertical_light.svg" alt="" width="50" height="105" />
+      <img class="intro-geom intro-geom--red-blob" src="Playful SVGs and GIFs/SVGs/Yellow/14_l_blob_light.svg" alt="" width="120" height="50" />
+      <img class="intro-geom intro-geom--arrow" src="Playful SVGs and GIFs/SVGs/Blue/15_arrow_left.svg" alt="" width="140" height="20" />
+      <img class="intro-geom intro-geom--dots" src="Playful SVGs and GIFs/SVGs/Blue/16_three_circles_outline.svg" alt="" width="90" height="24" />
+      <img class="intro-geom intro-geom--arches" src="Playful SVGs and GIFs/SVGs/Blue/17_three_arches.svg" alt="" width="100" height="24" />
+    </div>
+
+    <!-- Scene 3: Sticker Stage -->
+    <div class="intro-stickers" id="intro-stickers">
+      <div class="intro-sticker intro-sticker--assembly" id="intro-sticker-assembly">
+        <img src="Playful SVGs and GIFs/Gifs/GDG-Sticker-Assembly.gif" alt="" width="380" height="244" />
+      </div>
+      <div class="intro-sticker intro-sticker--brackets" id="intro-sticker-brackets">
+        <img src="Playful SVGs and GIFs/Gifs/GDG-Sticker-Brackets.gif" alt="" width="180" height="101" />
+      </div>
+    </div>
+
+    <!-- Scene 4 & 5: Logo & Chapter Identity Reveal -->
+    <div class="intro-logo-container" id="intro-logo-container">
+      <div class="intro-logo-card" id="intro-logo-card">
+        <img id="intro-logo-img" src="Logo/Logos/GDG-Main-Logo.png" alt="Google Developer Groups" width="130" height="109" />
+      </div>
+      <div class="intro-identity" id="intro-identity">
+        <div class="intro-identity__badge" id="intro-identity-badge">[ GDG ON CAMPUS · UVCE ]</div>
+        <div class="intro-identity__sub" id="intro-identity-sub">// WEB DEVELOPMENT WORKSHOP</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ============================ STICKY NAV ============================ -->
 <header class="site-nav" id="site-nav">
   <div class="site-nav__container">
     <a class="site-nav__brand" href="#hero">
-      <img src="assets/logo.jpeg" alt="GDG UVCE logo" width="30" height="30" />
+      <img src="Logo/Logos/GDG-Main-Logo.png" alt="GDG UVCE logo" width="30" height="30" />
       <span>GDG UVCE</span>
       <span class="code-pill code-pill--blue nav-badge">[ ON CAMPUS ]</span>
     </a>
@@ -70,7 +149,7 @@
       <span class="code-pill code-pill--neutral">// GDG ON CAMPUS · UVCE</span>
     </div>
 
-    <img class="hero-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" width="56" height="56" />
+    <img class="hero-logo" src="Logo/Logos/GDG-Main-Logo.png" alt="GDG UVCE logo" width="56" height="56" />
 
     <p class="eyebrow">// STUDENT COMMUNITY INITIATIVE</p>
 
@@ -476,6 +555,10 @@
   </div>
 </footer>
 
+<script src="gsap-public/gsap-public/minified/gsap.min.js"></script>
+<script src="gsap-public/gsap-public/minified/DrawSVGPlugin.min.js"></script>
+<script src="gsap-public/gsap-public/minified/ScrambleTextPlugin.min.js"></script>
+<script src="gsap-public/gsap-public/minified/CustomEase.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/data.js"></script>
 <script src="js/intro.js"></script>
