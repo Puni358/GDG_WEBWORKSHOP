@@ -288,7 +288,7 @@ This design system embodies the developer-first, high-energy ethos of a collegia
 
   
 
-The target audience includes aspiring software engineers, open-source contributors, UI/UX designers, and campus innovators. The emotional tone is energetic, welcoming, technically credible, and optimistic. Bold continuous line-art framing, wireframe globes, curly code braces `{ }`, terminal slashes `//`, asterisks `*`, and pill-shaped badge elements celebrate the craft of building software in an accessible, community-driven format.
+The target audience includes aspiring software engineers, open-source contributors, UI/UX designers, and campus innovators. The emotional tone is energetic, welcoming, technically credible, and optimistic. Bold continuous line-art framing, wireframe globes, curly code braces `{ }`, asterisks `*`, and pill-shaped badge elements celebrate the craft of building software in an accessible, community-driven format.
 
   
 
@@ -331,7 +331,7 @@ The typographic hierarchy pairs clean, modern geometric sans-serif shapes with h
 
 - **Body Text (Google Sans)**: Used at 400 and 500 weights for maximum legibility across announcements, task requirements, and onboarding copy.
 
-- **Code Primitives & Badging (Google Sans Mono)**: Reserved for micro-labels, dates, technical requirements, brackets `{ }`, operators `//`, tags, and system stats. This keeps the developer identity front and center.
+- **Code Primitives & Badging (Google Sans Mono)**: Reserved for micro-labels, dates, technical requirements, curly brackets `{ }`, tags, and system stats. This keeps the developer identity front and center.
 
   
 
@@ -385,17 +385,14 @@ The shape system centers on elongated **pill forms, stadium geometries, and cont
 ### Chips & Badges
 
 - **Monospace Code Pill**: Compact stadium containers with `0.25rem` vertical and `0.75rem` horizontal padding. Rendered in pastel fills (e.g., `#FFE7A5`) with a `1px solid #1E1E1E` border, featuring `label-sm` monospaced text.
-
-- **Status Indicator**: Features a solid colored circle (`#34A853` for open applications) paired with a bold bracket label: `[ OPEN ]`.
+- **Status Indicator**: Features a solid colored circle (`#34A853` for open applications) paired with a clean text label: `OPEN` (no decorative square brackets).
 
   
 
 ### Asymmetrical Window Cards
 
 - **Structure**: Outer card rendered with pure white surface (`#FFFFFF`), outlined with a continuous `2px solid #1E1E1E`.
-
 - **Window Header**: The top-left features a distinct rounded notch containing three circular window controls (`12px` diameter each, spaced `6px` apart) filled in Core Halftone shades or pure monochrome strokes.
-
 - **Footer Section**: Branded bottom notch displaying the chapter mark alongside recruitment track info.
 
   
@@ -403,13 +400,54 @@ The shape system centers on elongated **pill forms, stadium geometries, and cont
 ### Form Inputs
 
 - **Text Field**: High-contrast white container, `1.5px solid #1E1E1E`, `12px` border radius, using `body-md` typography.
-
 - **Focus State**: The outline increases to `2px` Core Blue (`#4285F4`) with an offset hard shadow of `2px 2px 0px #4285F4`.
-
-- **Helper & Code Meta**: Positioned below the field in `Google Sans Mono` with the prefix `//`.
+- **Helper & Code Meta**: Positioned below the field in `Google Sans Mono` (clean text without decorative `//` prefixes).
 
 ### Checkboxes & Segmented Controls
 
 - **Checkboxes**: Square with softened `4px` corners, `1.5px solid #1E1E1E`, displaying a clean check glyph in crisp white over Core Blue or Core Green when selected.
-
 - **Segmented Pill Bar**: Enclosed capsule container in `#F0F0F0` with a `1.5px solid #1E1E1E` border. Active segment slides via a white pill card with its own border and label.
+
+---
+
+## Text Conventions & Identity Branding
+
+To maintain maximum visual clarity, accessibility, and professional presentation across all screen sizes while preserving the Neo-Brutalist Light aesthetic, enforce the following strict rules:
+
+### 1. No Decorative Slashes (`//`)
+- **Rule**: Do NOT use decorative `//` prefixes before headings, sentences, section labels, card labels, footer labels, navigation links, or other UI text.
+- **Examples**:
+  - `CHAPTER OVERVIEW` (never `// CHAPTER OVERVIEW`)
+  - `GDG ON CAMPUS · UVCE` (never `// GDG ON CAMPUS · UVCE`)
+  - `Workshop` (never `// Workshop`)
+  - `Community` (never `// Community`)
+  - `01_structure.html` (never `// 01_structure.html`)
+  - `ARCADE_CHALLENGE` (never `// ARCADE_CHALLENGE`)
+  - `18-SEC SPEED CHALLENGE` (never `// 18-SEC SPEED CHALLENGE`)
+  - `STACK COMPLETE ✓` (never `// STACK COMPLETE ✓`)
+- **Functional Exception**: Legitimate code syntax, operators, file paths, or URLs where slashes are syntactically required remain untouched.
+
+### 2. No Decorative Square Brackets (`[ ]`)
+- **Rule**: Do NOT wrap UI labels, status indicators, badges, or window tags in decorative square brackets.
+- **Examples**:
+  - `CHAPTER_PROFILE` (never `[ CHAPTER_PROFILE ]`)
+  - `REGISTRATION_PORTAL` (never `[ REGISTRATION_PORTAL ]`)
+  - `EVENT_METADATA` (never `[ EVENT_METADATA ]`)
+  - `ON CAMPUS` (never `[ ON CAMPUS ]`)
+  - `OPEN` (never `[ OPEN ]`)
+  - `WEB_STACK_ARCADE` (never `[ WEB_STACK_ARCADE ]`)
+  - `WEB STACK` (never `[ WEB STACK ]`)
+- **Functional Exception**: Square brackets that are part of functional programming arrays, attribute selectors, or keyboard instructions remain untouched.
+
+### 3. Logo & Visual Branding System
+- **Official Asset**: Use the official Google Developer Groups logo (`Logo/Logos/GDG-Main-Logo.png`) across all brand touchpoints:
+  - Sticky navigation bar (`.site-nav__brand img`)
+  - Hero branding mark (`.hero-logo`)
+  - Chapter overview card (`.about-logo`)
+  - Footer brand lockup (`.site-footer__brand img`)
+  - Browser tab favicon (`<link rel="icon">`) and social card metadata (`og:image`, `twitter:image`)
+- **Presentation**: Maintain the established neo-brutalist container conventions:
+  - Solid structural outline (`1.5px`–`2px solid #1E1E1E`)
+  - Crisp white container fill (`#FFFFFF`) with internal breathing room (`padding: 2px` to `4px`)
+  - `object-fit: contain;` to preserve crisp vector geometry without clipping or distortion
+  - Hard tactile drop shadow matching the surrounding elevation system.

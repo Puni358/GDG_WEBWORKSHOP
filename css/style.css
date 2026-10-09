@@ -1104,6 +1104,9 @@ section {
   height: 30px;
   border-radius: var(--rounded-sm);
   border: var(--border-thin);
+  object-fit: contain;
+  background: var(--crisp-white);
+  padding: 2px;
 }
 
 .nav-badge {
@@ -1909,7 +1912,8 @@ section {
   border: var(--border-structural);
   box-shadow: var(--shadow-button);
   background: var(--crisp-white);
-  padding: 2px;
+  padding: 4px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -1990,6 +1994,9 @@ section {
   height: 32px;
   border-radius: var(--rounded-sm);
   border: var(--border-medium);
+  object-fit: contain;
+  background: var(--crisp-white);
+  padding: 2px;
 }
 
 .site-footer__tagline {

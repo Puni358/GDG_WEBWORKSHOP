@@ -147,7 +147,7 @@
           <span class="window-dot window-dot--yellow"></span>
           <span class="window-dot window-dot--green"></span>
         </div>
-        <span class="card-window-tag">// speaker_0${i + 1}</span>
+        <span class="card-window-tag">speaker_0${i + 1}</span>
       </div>
       <div class="speaker-card__body">
         ${avatarHTML}
@@ -157,8 +157,8 @@
         </div>
       </div>
       <div class="card-window-footer">
-        <span class="card-window-chapter">// GDG UVCE</span>
-        <span class="card-window-track">[ INSTRUCTOR ]</span>
+        <span class="card-window-chapter">GDG UVCE</span>
+        <span class="card-window-track">INSTRUCTOR</span>
       </div>
     `;
     speakerGrid.appendChild(card);

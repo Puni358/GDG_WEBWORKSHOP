@@ -517,12 +517,12 @@
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Title Bar Text: [WEB STACK]
+    // Title Bar Text: WEB STACK
     ctx.fillStyle = "#1E1E1E";
     ctx.font = 'bold 9px "Google Sans Mono", monospace';
     ctx.textAlign = "left";
     ctx.textBaseline = "middle";
-    ctx.fillText("[WEB STACK]", -hw + 8, -hh + titleH / 2);
+    ctx.fillText("WEB STACK", -hw + 8, -hh + titleH / 2);
 
     // Colored Window Dots
     const dotR = 3;
