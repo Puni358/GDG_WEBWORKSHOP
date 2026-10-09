@@ -871,9 +871,8 @@ section {
 }
 
 .intro-geom--dots {
-  top: 11%;
-  left: 50%;
-  margin-left: -45px;
+  bottom: 24%;
+  left: 26%;
 }
 
 .intro-geom--arches {
@@ -1144,6 +1143,8 @@ section {
 
 /* ============================ HERO SECTION ============================ */
 #hero {
+  position: relative;
+  overflow: hidden;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -1155,7 +1156,53 @@ section {
   background-color: var(--surface);
 }
 
+/* Subtle Developer SVG Flank Accents */
+.hero-accent {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.38;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero-accent img {
+  display: block;
+}
+
+.hero-accent--top-left {
+  top: 14%;
+  left: clamp(1rem, 4vw, 3.5rem);
+  transform: rotate(-6deg);
+}
+
+.hero-accent--top-right {
+  top: 15%;
+  right: clamp(1rem, 4.5vw, 4rem);
+  transform: rotate(8deg);
+}
+
+.hero-accent--bottom-right {
+  bottom: 12%;
+  right: clamp(1rem, 4vw, 3.5rem);
+  transform: rotate(4deg);
+}
+
+@media (max-width: 1024px) {
+  .hero-accent {
+    opacity: 0.22;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-accent {
+    display: none;
+  }
+}
+
 .hero-container {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1200,6 +1247,10 @@ section {
 
 .hero-title__line {
   display: block;
+}
+
+.hero-title__line--accent {
+  color: var(--core-blue, #4285F4);
 }
 
 /* Hero Event Metadata Window */
