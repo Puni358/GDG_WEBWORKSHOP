@@ -401,15 +401,16 @@
 </section>
 
 <!-- ============================ GAME ============================ -->
-<section id="game" aria-label="Catch the butterflies game">
+<!-- ============================ GAME: SHIP THE WEB ============================ -->
+<section id="game" aria-label="Ship the Web mini-game">
   <div class="container game-module">
     <div class="section-header reveal">
       <div class="section-header__tag">
-        <span class="code-pill code-pill--green">// INTERACTIVE</span>
+        <span class="code-pill code-pill--green">// ARCADE_CHALLENGE</span>
       </div>
-      <p class="eyebrow">{ MINI-GAME }</p>
-      <h2 class="section-title type-headline-lg">Catch the butterflies</h2>
-      <p class="section-sub type-body-md">Tap as many as you can in 20 seconds before they fly off.</p>
+      <p class="eyebrow">{ SHIP THE WEB }</p>
+      <h2 class="section-title type-headline-lg">Ship the Web</h2>
+      <p class="section-sub type-body-md">Catch the stack. Build the web. Ship it.</p>
     </div>
 
     <div class="window-card game-window reveal">
@@ -419,35 +420,80 @@
           <span class="window-dot window-dot--yellow"></span>
           <span class="window-dot window-dot--green"></span>
         </div>
-        <span class="card-window-tag">// butterflies_game.exe</span>
+        <span class="card-window-tag">// ship_the_web.exe</span>
       </div>
 
       <div id="game-stage">
         <canvas id="game-canvas"></canvas>
 
+        <!-- HUD: Live Score, Stack Badges, Combo, Timer -->
         <div id="game-hud" hidden>
-          <span id="game-score" class="code-pill code-pill--blue">Score 0</span>
-          <span id="game-timer" class="code-pill code-pill--red">20s</span>
+          <div class="game-hud__left">
+            <span id="game-score" class="code-pill code-pill--blue">Score: 0</span>
+            <span id="game-combo" class="code-pill code-pill--yellow" hidden>Combo ×1</span>
+          </div>
+          <div class="game-hud__center" id="game-stack-status" aria-label="Stack progress">
+            <span class="stack-badge" id="badge-html" data-cat="html">HTML</span>
+            <span class="stack-badge" id="badge-css" data-cat="css">CSS</span>
+            <span class="stack-badge" id="badge-js" data-cat="js">JS</span>
+            <span class="stack-badge" id="badge-git" data-cat="git">GIT</span>
+            <span class="stack-badge" id="badge-deploy" data-cat="deploy">SHIP</span>
+          </div>
+          <div class="game-hud__right">
+            <span id="game-timer" class="code-pill code-pill--red">18s</span>
+          </div>
         </div>
 
+        <!-- Start Screen -->
         <div id="game-start-screen" class="game-overlay">
-          <span class="code-pill code-pill--yellow">// SPEED_CHALLENGE</span>
-          <h3 class="game-overlay-title">Catch the Butterflies</h3>
-          <p class="game-overlay-sub">Quick 20-second arcade test while waiting for the workshop.</p>
-          <button id="game-start-btn" class="btn btn--primary" type="button">Start the hunt ›</button>
+          <span class="code-pill code-pill--yellow">// 18-SEC SPEED CHALLENGE</span>
+          <h3 class="game-overlay-title">SHIP THE WEB</h3>
+          <p class="game-overlay-sub">Catch falling HTML, CSS, JavaScript, Git &amp; Deploy tags. Avoid bugs. Build the complete stack!</p>
+          <div class="game-controls-hint">
+            <span>[← →] / [A D] or Mouse</span> · <span>Mobile: Drag Basket</span>
+          </div>
+          <button id="game-start-btn" class="btn btn--primary" type="button">Start the build ›</button>
         </div>
 
-        <div id="game-end-screen" class="game-overlay" hidden>
-          <span class="code-pill code-pill--green">// ROUND_COMPLETE</span>
-          <p class="game-end-label">Final score</p>
-          <p id="game-final-score">0</p>
-          <button id="game-replay-btn" class="btn btn--secondary" type="button">Play again ↻</button>
+        <!-- Ending & Workshop Reveal Screen -->
+        <div id="game-end-screen" class="game-overlay game-overlay--complete" hidden>
+          <div class="end-stack-header">
+            <span class="code-pill code-pill--green" id="end-status-pill">// STACK COMPLETE ✓</span>
+            <h3 class="game-overlay-title" id="end-title">STACK COMPLETE.</h3>
+          </div>
+
+          <div class="end-checklist" id="end-checklist">
+            <div class="end-check-item" data-check="html"><span class="check-icon">✓</span> HTML</div>
+            <div class="end-check-item" data-check="css"><span class="check-icon">✓</span> CSS</div>
+            <div class="end-check-item" data-check="js"><span class="check-icon">✓</span> JAVASCRIPT</div>
+            <div class="end-check-item" data-check="git"><span class="check-icon">✓</span> GIT</div>
+            <div class="end-check-item" data-check="deploy"><span class="check-icon">✓</span> DEPLOY</div>
+          </div>
+
+          <div class="end-scores">
+            <span class="end-score-item">SCORE: <strong id="game-final-score">0</strong></span>
+            <span class="end-score-divider">·</span>
+            <span class="end-score-item">MAX COMBO: <strong id="game-max-combo">×1</strong></span>
+          </div>
+
+          <div class="end-workshop-card">
+            <p class="end-statement">YOU'VE GOT THE STACK.</p>
+            <p class="end-statement-sub">NOW LET'S BUILD SOMETHING REAL.</p>
+            <div class="end-divider" aria-hidden="true"></div>
+            <p class="end-chapter-tag">// GDG ON CAMPUS · UVCE PRESENTS</p>
+            <h4 class="end-workshop-title">WEB DEVELOPMENT WORKSHOP</h4>
+          </div>
+
+          <div class="end-actions">
+            <a href="#about" class="btn btn--primary js-register-btn">Claim your seat ›</a>
+            <button id="game-replay-btn" class="btn btn--secondary" type="button">Play again ↻</button>
+          </div>
         </div>
       </div>
 
       <div class="card-window-footer">
         <span class="card-window-chapter">// GDG ON CAMPUS · UVCE</span>
-        <span class="card-window-track">[ MINI_GAME_ARCADE ]</span>
+        <span class="card-window-track">[ WEB_STACK_ARCADE ]</span>
       </div>
     </div>
   </div>

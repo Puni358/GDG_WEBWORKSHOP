@@ -1636,10 +1636,14 @@ section {
 #game-stage {
   position: relative;
   width: 100%;
-  height: clamp(340px, 46vh, 420px);
+  height: clamp(380px, 52vh, 450px);
   overflow: hidden;
-  background-color: var(--surface);
+  background-color: var(--surface, #FCF9F8);
+  background-image: radial-gradient(#d3c4bc 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #game-canvas {
@@ -1656,14 +1660,67 @@ section {
 
 #game-hud {
   position: absolute;
-  top: 10px;
-  left: 12px;
-  right: 12px;
+  top: 8px;
+  left: 10px;
+  right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 5;
   pointer-events: none;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1.5px solid #1E1E1E;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  box-shadow: 2px 2px 0px #1E1E1E;
+}
+
+.game-hud__left,
+.game-hud__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-hud__center {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stack-badge {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border: 1.5px solid #1E1E1E;
+  border-radius: 9999px;
+  background: #E8EAED;
+  color: #5F6368;
+  box-shadow: 1px 1px 0px #1E1E1E;
+  transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.stack-badge.active {
+  background: var(--secondary-fixed, #89fa9b);
+  color: #002107;
+  border-color: #1E1E1E;
+  transform: scale(1.08);
+  box-shadow: 1.5px 1.5px 0px #1E1E1E;
+}
+
+.game-controls-hint {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--on-surface-variant);
+  background: #EDEAE9;
+  border: 1px solid #1E1E1E;
+  border-radius: 6px;
+  padding: 4px 10px;
+  box-shadow: 1.5px 1.5px 0px #1E1E1E;
 }
 
 .game-overlay[hidden] {
@@ -1680,16 +1737,23 @@ section {
   justify-content: center;
   gap: 0.75rem;
   text-align: center;
-  background: rgba(252, 249, 248, 0.94);
+  background: rgba(252, 249, 248, 0.96);
   padding: 1.5rem;
+}
+
+.game-overlay--complete {
+  padding: 1rem;
+  gap: 0.65rem;
+  overflow-y: auto;
 }
 
 .game-overlay-title {
   font-family: var(--font-family-display);
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   line-height: 32px;
   color: var(--on-surface);
+  letter-spacing: -0.02em;
 }
 
 .game-overlay-sub {
@@ -1697,24 +1761,117 @@ section {
   font-size: 13px;
   line-height: 20px;
   color: var(--on-surface-variant);
-  max-width: 32ch;
+  max-width: 36ch;
 }
 
-.game-end-label {
+.end-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: 360px;
+}
+
+.end-check-item {
   font-family: var(--font-family-mono);
   font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--on-surface-variant);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  border: 1.5px solid #1E1E1E;
+  background: #d4f8d3;
+  color: #003912;
+  box-shadow: 1.5px 1.5px 0px #1E1E1E;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
 }
 
-#game-final-score {
-  font-size: 56px;
-  font-weight: 800;
+.end-scores {
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1E1E1E;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.end-score-divider {
+  color: var(--outline-variant, #79747E);
+}
+
+.end-workshop-card {
+  background: #FFFFFF;
+  border: 2px solid #1E1E1E;
+  border-radius: 12px;
+  box-shadow: 3px 3px 0px #1E1E1E;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+}
+
+.end-statement {
   font-family: var(--font-family-display);
-  color: var(--core-blue);
-  line-height: 1;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary, #0058bd);
+  letter-spacing: -0.01em;
+  margin: 0 0 2px 0;
+}
+
+.end-statement-sub {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #1E1E1E;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.end-divider {
+  height: 1px;
+  background: #1E1E1E;
+  margin: 6px auto;
+  width: 80%;
+  opacity: 0.25;
+}
+
+.end-chapter-tag {
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: #5F6368;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.end-workshop-title {
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: #1E1E1E;
+  letter-spacing: -0.02em;
+  margin: 2px 0 0 0;
+}
+
+.end-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .stack-badge {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+  .end-workshop-card {
+    max-width: 290px;
+    padding: 0.6rem 0.8rem;
+  }
 }
 
 /* ============================ ABOUT SECTION ============================ */
