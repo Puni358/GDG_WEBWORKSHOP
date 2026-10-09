@@ -933,6 +933,8 @@ section {
   align-items: center;
   justify-content: center;
   transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .intro-logo-card img {

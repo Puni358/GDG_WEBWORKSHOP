@@ -115,6 +115,19 @@
   }
   if (typeof MotionPathPlugin !== "undefined") gsap.registerPlugin(MotionPathPlugin);
 
+  // Pre-decode GIF and Logo images asynchronously so GPU textures are primed
+  [
+    "Playful SVGs and GIFs/Gifs/GDG-Sticker-Assembly.gif",
+    "Playful SVGs and GIFs/Gifs/GDG-Sticker-Brackets.gif",
+    "Logo/Logos/GDG-Main-Logo.png"
+  ].forEach(function (src) {
+    const img = new Image();
+    img.src = src;
+    if (img.decode) {
+      img.decode().catch(function () {});
+    }
+  });
+
   // Scoped animation context for bulletproof cleanup
   ctx = gsap.context(function () {
     const snapEase = gsap.parseEase("neoSnap") || "back.out(1.8)";
@@ -127,23 +140,23 @@
     });
     window.__introTL = tl;
 
-    // Semantic scene labels
+    // Semantic scene labels — perfectly calibrated continuous pacing
     tl.addLabel("boot", 0)
       .addLabel("assembly", 0.85)
-      .addLabel("sticker", 1.85)
+      .addLabel("sticker", 1.68)
       .addLabel("collapse", 3.05)
-      .addLabel("identity", 4.1)
-      .addLabel("handoff", 4.85);
+      .addLabel("identity", 4.05)
+      .addLabel("handoff", 4.80);
 
     /* -------------------------------------------------------------------------
-       INITIAL ELEMENT STATES
+       INITIAL ELEMENT STATES — Stable layout & GPU transform origin initialization
        ------------------------------------------------------------------------- */
     gsap.set(".intro-boot-line", { opacity: 0, y: -10 });
     gsap.set(".intro-svg", { opacity: 0, scale: 0.7 });
     gsap.set(".intro-geom", { opacity: 0, scale: 0 });
-    gsap.set("#intro-sticker-assembly", { opacity: 0, scale: 0 });
-    gsap.set("#intro-sticker-brackets", { opacity: 0, scale: 0 });
-    gsap.set("#intro-logo-card", { opacity: 0, scale: 0 });
+    gsap.set("#intro-sticker-assembly", { opacity: 0, scale: 0.25, y: -28, rotation: -7 });
+    gsap.set("#intro-sticker-brackets", { opacity: 0, scale: 0.2, rotation: 10 });
+    gsap.set("#intro-logo-card", { opacity: 0, scale: 0.32, rotation: -6 });
     gsap.set("#intro-identity", { opacity: 0, y: 12 });
 
     /* -------------------------------------------------------------------------
@@ -242,67 +255,69 @@
       "assembly+=0.38"
     );
 
-    // Subtle breathing settle as the final shapes complete their lock-in
-    tl.to([".intro-geom--blue-pill", ".intro-geom--green-pill", ".intro-geom--yellow-stadium", ".intro-geom--red-blob"], {
-      scale: 1,
-      duration: 0.2,
-      ease: "power2.out"
-    }, "assembly+=0.68");
-
     /* -------------------------------------------------------------------------
-       SCENE 3: STICKER MOMENT — HERO OF THE INTRO (1.85s – 3.05s)
-       Fluid anticipation -> tactile entrance -> asymmetric elastic recoil
+       SCENE 3: STICKER MOMENT — HERO OF THE INTRO (1.62s – 2.50s)
+       Continuous momentum: geometry arrival flows into anticipation cushion ->
+       sticker drops into active pocket -> physical impact recoil at contact
        ------------------------------------------------------------------------- */
-    // Step 1: Fluid Anticipation — surrounding geometry smoothly cushions inward
-    // continuously from 1.85s to 2.18s (zero dead freeze, continuous deceleration)
+    // Step 1: Living Anticipation — as red blob and arches lock in at ~1.62s,
+    // geometry momentum transfers directly into an organic inward compression.
+    // Zero dead zone: runs continuously from 1.62s to 2.02s (400ms gentle deceleration).
     tl.to(".intro-primitives", { 
-      scale: 0.965, 
-      duration: 0.33, 
+      scale: 0.962, 
+      duration: 0.40, 
       ease: "power2.out" 
+    }, "assembly+=0.77");
+
+    // Step 2: GDG Assembly Sticker enters while geometry is actively cushioning
+    // Drops into the living pocket, accelerating toward center stage
+    tl.to("#intro-sticker-assembly", { 
+      scale: 1, 
+      rotation: 0, 
+      y: 0, 
+      opacity: 1, 
+      duration: 0.58, 
+      ease: "back.out(2.2)" 
     }, "sticker");
 
-    // Step 2: GDG Assembly Sticker drops into center stage with crisp kinetic arrival
-    tl.fromTo("#intro-sticker-assembly", 
-      { scale: 0.28, rotation: -7, y: -26, opacity: 0 }, 
-      { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.58, ease: "back.out(2.2)" }, 
-      "sticker+=0.06"
-    );
-
-    // Step 3: Physical Impact Recoil — triggered precisely when sticker makes contact (sticker+=0.33 = 2.18s)
+    // Step 3: Physical Impact Recoil — triggers at the exact moment of visual contact (sticker+=0.34 = 2.02s)
     // Parent container elastically rebounds back to rest
     tl.to(".intro-primitives", { 
       scale: 1, 
-      duration: 0.34, 
+      duration: 0.36, 
       ease: "power2.out" 
-    }, "sticker+=0.33");
+    }, "sticker+=0.34");
 
-    // 4 Quadrant Shapes: Asymmetric impulse response (punchy 110ms outward blast + 260ms smooth elastic return)
+    // 4 Quadrant Shapes: Kinetic impulse shockwave (110ms outward blast + 260ms smooth elastic return)
     // Blue Pill (Top-Left)
-    tl.to(".intro-geom--blue-pill", { x: -8, y: -6, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
-    tl.to(".intro-geom--blue-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+    tl.to(".intro-geom--blue-pill", { x: -9, y: -7, duration: 0.11, ease: "power2.out" }, "sticker+=0.34");
+    tl.to(".intro-geom--blue-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.45");
 
     // Yellow Stadium (Bottom-Right)
-    tl.to(".intro-geom--yellow-stadium", { x: 8, y: 7, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
-    tl.to(".intro-geom--yellow-stadium", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+    tl.to(".intro-geom--yellow-stadium", { x: 9, y: 8, duration: 0.11, ease: "power2.out" }, "sticker+=0.34");
+    tl.to(".intro-geom--yellow-stadium", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.45");
 
     // Green Pill (Bottom-Left)
-    tl.to(".intro-geom--green-pill", { x: -7, y: 7, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
-    tl.to(".intro-geom--green-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+    tl.to(".intro-geom--green-pill", { x: -8, y: 8, duration: 0.11, ease: "power2.out" }, "sticker+=0.34");
+    tl.to(".intro-geom--green-pill", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.45");
 
     // Red Blob (Top-Right)
-    tl.to(".intro-geom--red-blob", { x: 8, y: -6, duration: 0.11, ease: "power2.out" }, "sticker+=0.33");
-    tl.to(".intro-geom--red-blob", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.44");
+    tl.to(".intro-geom--red-blob", { x: 9, y: -7, duration: 0.11, ease: "power2.out" }, "sticker+=0.34");
+    tl.to(".intro-geom--red-blob", { x: 0, y: 0, duration: 0.26, ease: "power2.inOut" }, "sticker+=0.45");
 
-    // Step 4: Bracket sticker joins composition on lower-right
-    tl.fromTo("#intro-sticker-brackets", 
-      { scale: 0.22, rotation: 10, opacity: 0 }, 
-      { scale: 1, rotation: 0, opacity: 1, duration: 0.46, ease: "back.out(1.8)" }, 
-      "sticker+=0.26"
-    );
+    // Step 4: Bracket sticker joins composition on lower-right alongside settled assembly
+    tl.to("#intro-sticker-brackets", { 
+      scale: 1, 
+      rotation: 0, 
+      opacity: 1, 
+      duration: 0.46, 
+      ease: "back.out(1.8)" 
+    }, "sticker+=0.28");
 
     /* -------------------------------------------------------------------------
-       SCENE 4: REAL TRANSFORMATION INTO THE LOGO (3.05s – 4.05s)
-       Tiered convergence rather than simultaneous collapse
+       SCENE 4: REAL TRANSFORMATION / CONVERGENCE INTO LOGO (3.05s – 4.05s)
+       Energy naturally converges -> GDG Logo emerges directly from that focal core
+       Zero empty screen void, zero pop: direct kinetic energy transfer
        ------------------------------------------------------------------------- */
     // Tier 1: Outer line-art primitives (globe, slash, asterisk, arches, dots) glide inward
     tl.to(["#intro-svg-globe", "#intro-svg-slash", "#intro-svg-asterisk", ".intro-geom--dots", ".intro-geom--arches"], {
@@ -313,9 +328,9 @@
     }, "collapse");
 
     // Tier 2: Braces and arrow rotate inward toward center
-    tl.to("#intro-svg-brace-left", { x: 45, rotation: 12, scale: 0.25, opacity: 0, duration: 0.34, ease: "power2.in" }, "collapse+=0.1");
-    tl.to("#intro-svg-brace-right", { x: -45, rotation: -12, scale: 0.25, opacity: 0, duration: 0.34, ease: "power2.in" }, "collapse+=0.1");
-    tl.to(".intro-geom--arrow", { y: -25, scale: 0.2, opacity: 0, duration: 0.3, ease: "power2.in" }, "collapse+=0.1");
+    tl.to("#intro-svg-brace-left", { x: 45, rotation: 12, scale: 0.25, opacity: 0, duration: 0.34, ease: "power2.in" }, "collapse+=0.08");
+    tl.to("#intro-svg-brace-right", { x: -45, rotation: -12, scale: 0.25, opacity: 0, duration: 0.34, ease: "power2.in" }, "collapse+=0.08");
+    tl.to(".intro-geom--arrow", { y: -25, scale: 0.2, opacity: 0, duration: 0.3, ease: "power2.in" }, "collapse+=0.08");
 
     // Tier 3: 4 Google color blocks converge together toward the central anchor point
     tl.to([".intro-geom--blue-pill", ".intro-geom--yellow-stadium", ".intro-geom--green-pill", ".intro-geom--red-blob"], {
@@ -324,9 +339,9 @@
       scale: 0.25,
       opacity: 0,
       stagger: 0.02,
-      duration: 0.32,
+      duration: 0.34,
       ease: "power3.in"
-    }, "collapse+=0.18");
+    }, "collapse+=0.15");
 
     // Tier 4: Sticker containers condense into center core
     tl.to(["#intro-sticker-brackets", "#intro-sticker-assembly"], {
@@ -334,22 +349,24 @@
       opacity: 0,
       duration: 0.28,
       ease: "power3.in"
-    }, "collapse+=0.3");
+    }, "collapse+=0.23");
 
-    // Tier 5: 70ms Micro-pause (Visual silence right before logo landing)
-
-    // Tier 6: Official GDG Logo Card lands firmly with confident tactile snap
-    tl.fromTo("#intro-logo-card", 
-      { scale: 0.2, rotation: -10, y: -20, opacity: 0 }, 
-      { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.52, ease: "back.out(2.4)" }, 
-      "collapse+=0.65"
-    );
+    // Tier 5: GDG LOGO EMERGENCE (Direct kinetic handoff from converging core)
+    // As the Google colors and stickers fuse into the center, the Logo Card expands
+    // directly from that dense core with confident tactile snap
+    tl.to("#intro-logo-card", { 
+      scale: 1, 
+      rotation: 0, 
+      opacity: 1, 
+      duration: 0.54, 
+      ease: "back.out(2.2)" 
+    }, "collapse+=0.35");
 
     // Micro-settle on logo image
     tl.fromTo("#intro-logo-img", 
-      { scale: 0.92 }, 
+      { scale: 0.90 }, 
       { scale: 1, duration: 0.22, ease: "power2.out" }, 
-      "collapse+=0.75"
+      "collapse+=0.60"
     );
 
     /* -------------------------------------------------------------------------
