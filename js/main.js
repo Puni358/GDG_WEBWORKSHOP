@@ -63,15 +63,25 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ---------------------------- Hero date ---------------------------------- */
+  /* ---------------------------- Hero event metadata ------------------------ */
   const heroDateEl = document.getElementById("hero-date");
-  if (heroDateEl) {
+  if (heroDateEl && SITE_CONFIG.WORKSHOP_DATE) {
     heroDateEl.textContent = new Intl.DateTimeFormat("en-US", {
       weekday: "short",
       month: "short",
       day: "numeric",
       year: "numeric",
     }).format(new Date(SITE_CONFIG.WORKSHOP_DATE));
+  }
+
+  const heroTimeEl = document.getElementById("hero-time");
+  if (heroTimeEl && SITE_CONFIG.WORKSHOP_TIME) {
+    heroTimeEl.textContent = SITE_CONFIG.WORKSHOP_TIME;
+  }
+
+  const heroVenueEl = document.getElementById("hero-venue");
+  if (heroVenueEl && SITE_CONFIG.VENUE) {
+    heroVenueEl.textContent = SITE_CONFIG.VENUE;
   }
 
   /* ---------------------------- Typewriter headline ----------------------- */
