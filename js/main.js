@@ -121,7 +121,7 @@
   const speakerGrid = document.getElementById("speaker-grid");
   SPEAKERS.forEach((speaker, i) => {
     const card = document.createElement("div");
-    card.className = "speaker-card reveal";
+    card.className = "window-card speaker-card reveal";
     card.style.transitionDelay = `${i * 90}ms`;
 
     let avatarHTML;
@@ -141,10 +141,24 @@
     }
 
     card.innerHTML = `
-      ${avatarHTML}
-      <div class="speaker-info">
-        <span class="speaker-name">${speaker.name}</span>
-        <span class="speaker-title">${speaker.title}</span>
+      <div class="card-window-header">
+        <div class="window-controls" aria-hidden="true">
+          <span class="window-dot window-dot--red"></span>
+          <span class="window-dot window-dot--yellow"></span>
+          <span class="window-dot window-dot--green"></span>
+        </div>
+        <span class="card-window-tag">// speaker_0${i + 1}</span>
+      </div>
+      <div class="speaker-card__body">
+        ${avatarHTML}
+        <div class="speaker-info">
+          <span class="speaker-name">${speaker.name}</span>
+          <span class="speaker-title">${speaker.title}</span>
+        </div>
+      </div>
+      <div class="card-window-footer">
+        <span class="card-window-chapter">// GDG UVCE</span>
+        <span class="card-window-track">[ INSTRUCTOR ]</span>
       </div>
     `;
     speakerGrid.appendChild(card);

@@ -680,7 +680,7 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     const fontSize = Math.max(13, Math.min(20, ring.ringR * 0.115));
-    ctx.font = `600 ${fontSize}px Poppins, sans-serif`;
+    ctx.font = `600 ${fontSize}px 'Google Sans', sans-serif`;
     const capY = ring.cy + shardLayout.logoRadius + (ring.ringR - shardLayout.logoRadius) * 0.42;
     ctx.fillText("GDG on Campus · UVCE", ring.cx, capY);
     ctx.restore();

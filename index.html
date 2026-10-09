@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>GDG UVCE — Web Development Workshop</title>
 <meta name="description" content="A free, hands-on web development workshop from GDG on Campus, UVCE. Learn HTML, CSS, JavaScript and deployment, and ship your first live site." />
-<meta name="theme-color" content="#0a0a0a" />
+<meta name="theme-color" content="#fcf9f8" />
 
 <link rel="icon" href="assets/logo.jpeg" />
 <link rel="apple-touch-icon" href="assets/logo.jpeg" />
@@ -21,7 +21,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Google+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -39,100 +39,267 @@
 
 <!-- ============================ STICKY NAV ============================ -->
 <header class="site-nav" id="site-nav">
-  <a class="site-nav__brand" href="#hero">
-    <img src="assets/logo.jpeg" alt="" width="26" height="26" />
-    <span>GDG UVCE</span>
-  </a>
-  <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">Register</a>
+  <div class="site-nav__container">
+    <a class="site-nav__brand" href="#hero">
+      <img src="assets/logo.jpeg" alt="GDG UVCE logo" width="30" height="30" />
+      <span>GDG UVCE</span>
+      <span class="code-pill code-pill--blue nav-badge">[ ON CAMPUS ]</span>
+    </a>
+    <nav class="site-nav__links" aria-label="Quick navigation">
+      <a href="#learn" class="nav-link">// Curriculum</a>
+      <a href="#speakers" class="nav-link">// Speakers</a>
+      <a href="#game" class="nav-link">// Mini-game</a>
+      <a href="#about" class="nav-link">// About</a>
+    </nav>
+    <a class="btn btn--primary js-register-btn site-nav__cta" href="#" target="_blank" rel="noopener noreferrer">
+      Register
+    </a>
+  </div>
 </header>
 
 <main id="main-content">
 
 <!-- ============================ HERO ============================ -->
 <section id="hero" aria-label="Workshop hero">
-  <img class="hero-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" width="48" height="48" />
-
-  <p class="eyebrow">GDG on Campus · UVCE</p>
-  <h1 class="hero-title">Web Development Workshop</h1>
-  <p class="hero-meta">
-    <strong id="hero-date">Loading date…</strong> · 10:00 AM onwards · <span id="hero-venue">[Venue — add your location]</span>
-  </p>
-
-  <p class="typewriter-line">
-    <span>Learn </span><span id="typewriter"></span><span class="caret" aria-hidden="true">|</span>
-  </p>
-
-  <div class="countdown" id="countdown" aria-label="Countdown to workshop">
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-days">00</span>
-      <span class="countdown__label countdown__label--blue">Days</span>
+  <div class="container hero-container">
+    <div class="hero-status-row">
+      <span class="status-indicator">
+        <span class="status-indicator__dot" aria-hidden="true"></span>
+        <span>[ OPEN ]</span>
+      </span>
+      <span class="code-pill code-pill--neutral">// GDG ON CAMPUS · UVCE</span>
     </div>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-hours">00</span>
-      <span class="countdown__label countdown__label--red">Hours</span>
-    </div>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-mins">00</span>
-      <span class="countdown__label countdown__label--yellow">Mins</span>
-    </div>
-    <div class="countdown__unit">
-      <span class="countdown__value" id="cd-secs">00</span>
-      <span class="countdown__label countdown__label--green">Secs</span>
-    </div>
-  </div>
 
-  <div class="btn-row cta-row">
-    <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
-      Claim your seat
-    </a>
-    <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
-      Join on WhatsApp
-    </a>
-  </div>
+    <img class="hero-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" width="56" height="56" />
 
-  <div class="scroll-hint" aria-hidden="true">
-    <span></span>
+    <p class="eyebrow">// STUDENT COMMUNITY INITIATIVE</p>
+
+    <h1 class="hero-title type-display-lg">
+      <span class="hero-title__line">Web Development</span>
+      <span class="hero-title__line">Workshop</span>
+    </h1>
+
+    <!-- Asymmetrical Window Card for Event Metadata -->
+    <div class="window-card hero-meta-window">
+      <div class="card-window-header">
+        <div class="window-controls" aria-hidden="true">
+          <span class="window-dot window-dot--red"></span>
+          <span class="window-dot window-dot--yellow"></span>
+          <span class="window-dot window-dot--green"></span>
+        </div>
+        <span class="card-window-tag">// event_meta.config</span>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta__item">
+          <span class="hero-meta__icon" aria-hidden="true">📅</span>
+          <div>
+            <span class="hero-meta__sub">DATE</span>
+            <strong id="hero-date">Loading date…</strong>
+          </div>
+        </div>
+        <div class="hero-meta__divider" aria-hidden="true"></div>
+        <div class="hero-meta__item">
+          <span class="hero-meta__icon" aria-hidden="true">⏰</span>
+          <div>
+            <span class="hero-meta__sub">TIME</span>
+            <strong>10:00 AM onwards</strong>
+          </div>
+        </div>
+        <div class="hero-meta__divider" aria-hidden="true"></div>
+        <div class="hero-meta__item">
+          <span class="hero-meta__icon" aria-hidden="true">📍</span>
+          <div>
+            <span class="hero-meta__sub">LOCATION</span>
+            <strong id="hero-venue">[Venue — add your location]</strong>
+          </div>
+        </div>
+      </div>
+      <div class="card-window-footer">
+        <span class="card-window-chapter">// GDG ON CAMPUS · UVCE</span>
+        <span class="card-window-track">[ EVENT_METADATA ]</span>
+      </div>
+    </div>
+
+    <!-- Typewriter Command Line -->
+    <div class="typewriter-box" aria-label="What you will learn">
+      <span class="typewriter-prefix">&gt; $ learn --track</span>
+      <span class="typewriter-output">
+        <span id="typewriter"></span><span class="caret" aria-hidden="true">_</span>
+      </span>
+    </div>
+
+    <!-- Neo-Brutalist Countdown -->
+    <div class="countdown-wrapper">
+      <div class="countdown" id="countdown" aria-label="Countdown to workshop">
+        <div class="countdown__unit">
+          <span class="countdown__unit-tag">// 01</span>
+          <span class="countdown__value" id="cd-days">00</span>
+          <span class="countdown__label countdown__label--blue">Days</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__unit-tag">// 02</span>
+          <span class="countdown__value" id="cd-hours">00</span>
+          <span class="countdown__label countdown__label--red">Hours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__unit-tag">// 03</span>
+          <span class="countdown__value" id="cd-mins">00</span>
+          <span class="countdown__label countdown__label--yellow">Mins</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__unit-tag">// 04</span>
+          <span class="countdown__value" id="cd-secs">00</span>
+          <span class="countdown__label countdown__label--green">Secs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="btn-row cta-row">
+      <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Claim your seat <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Join on WhatsApp <span class="btn-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint__track"></span>
+      <span class="scroll-hint__text">// SCROLL TO EXPLORE</span>
+    </div>
   </div>
 </section>
 
-<!-- ============================ WHAT YOU'LL LEARN ============================ -->
+<!-- ============================ WHAT YOU'LL LEARN (TINTED MATTING) ============================ -->
 <section id="learn" aria-label="What you'll learn">
   <div class="container">
     <div class="section-header">
-      <p class="eyebrow reveal">Session</p>
-      <h2 class="section-title reveal">What you'll learn</h2>
-      <p class="section-sub reveal">Four short, hands-on stops — from a blank file to a live URL.</p>
+      <div class="section-header__tag">
+        <span class="code-pill code-pill--blue reveal">// 04_MODULES</span>
+      </div>
+      <p class="eyebrow reveal">{ CURRICULUM }</p>
+      <h2 class="section-title type-headline-lg reveal">What you'll learn</h2>
+      <p class="section-sub type-body-md reveal">Four hands-on tracks mapped directly to Google's 4-quadrant chromatic foundation — from a blank file to a live URL.</p>
     </div>
-    <ol class="session-list">
-      <li class="session-row reveal">
-        <span class="session-row__num session-row__num--blue">01</span>
-        <div class="session-row__body">
-          <h3>HTML</h3>
-          <p>Structure a real page with semantic markup.</p>
+
+    <div class="session-grid">
+      <!-- 01 HTML (Pastel Blue Matting) -->
+      <div class="session-matting session-matting--blue reveal">
+        <div class="window-card session-card">
+          <div class="card-window-header">
+            <div class="window-controls" aria-hidden="true">
+              <span class="window-dot window-dot--red"></span>
+              <span class="window-dot window-dot--yellow"></span>
+              <span class="window-dot window-dot--green"></span>
+            </div>
+            <span class="card-window-tag">// 01_structure.html</span>
+          </div>
+          <div class="session-card__body">
+            <div class="session-card__meta">
+              <span class="code-pill code-pill--blue">01 / BLUE</span>
+              <span class="code-pill code-pill--neutral">{ markup }</span>
+            </div>
+            <h3 class="session-card__title">HTML5 Semantic Structure</h3>
+            <p class="session-card__desc">Structure real, accessible web pages using modern HTML5 tags, semantic document hierarchy, forms, and accessibility primitives.</p>
+            <div class="session-card__footer">
+              <code>&lt;main class="app"&gt;</code>
+            </div>
+          </div>
+          <div class="card-window-footer">
+            <span class="card-window-chapter">// GDG UVCE</span>
+            <span class="card-window-track">[ 01 / HTML ]</span>
+          </div>
         </div>
-      </li>
-      <li class="session-row reveal">
-        <span class="session-row__num session-row__num--red">02</span>
-        <div class="session-row__body">
-          <h3>CSS</h3>
-          <p>Style and lay it out so it actually looks good.</p>
+      </div>
+
+      <!-- 02 CSS (Pastel Red Matting) -->
+      <div class="session-matting session-matting--red reveal">
+        <div class="window-card session-card">
+          <div class="card-window-header">
+            <div class="window-controls" aria-hidden="true">
+              <span class="window-dot window-dot--red"></span>
+              <span class="window-dot window-dot--yellow"></span>
+              <span class="window-dot window-dot--green"></span>
+            </div>
+            <span class="card-window-tag">// 02_styles.css</span>
+          </div>
+          <div class="session-card__body">
+            <div class="session-card__meta">
+              <span class="code-pill code-pill--red">02 / RED</span>
+              <span class="code-pill code-pill--neutral">{ layout }</span>
+            </div>
+            <h3 class="session-card__title">Modern CSS &amp; Responsive Layouts</h3>
+            <p class="session-card__desc">Master Flexbox, CSS Grid, custom properties, and fluid typography so your sites look crisp on phones, tablets, and desktops.</p>
+            <div class="session-card__footer">
+              <code>display: grid; gap: 1.5rem;</code>
+            </div>
+          </div>
+          <div class="card-window-footer">
+            <span class="card-window-chapter">// GDG UVCE</span>
+            <span class="card-window-track">[ 02 / CSS ]</span>
+          </div>
         </div>
-      </li>
-      <li class="session-row reveal">
-        <span class="session-row__num session-row__num--yellow">03</span>
-        <div class="session-row__body">
-          <h3>JavaScript</h3>
-          <p>Add interactivity — clicks, state, simple logic.</p>
+      </div>
+
+      <!-- 03 JavaScript (Pastel Yellow Matting) -->
+      <div class="session-matting session-matting--yellow reveal">
+        <div class="window-card session-card">
+          <div class="card-window-header">
+            <div class="window-controls" aria-hidden="true">
+              <span class="window-dot window-dot--red"></span>
+              <span class="window-dot window-dot--yellow"></span>
+              <span class="window-dot window-dot--green"></span>
+            </div>
+            <span class="card-window-tag">// 03_logic.js</span>
+          </div>
+          <div class="session-card__body">
+            <div class="session-card__meta">
+              <span class="code-pill code-pill--yellow">03 / YELLOW</span>
+              <span class="code-pill code-pill--neutral">{ logic }</span>
+            </div>
+            <h3 class="session-card__title">JavaScript Interactivity &amp; DOM</h3>
+            <p class="session-card__desc">Bring pages to life with user events, DOM manipulation, timers, state management, and responsive interactive logic.</p>
+            <div class="session-card__footer">
+              <code>btn.addEventListener("click", run);</code>
+            </div>
+          </div>
+          <div class="card-window-footer">
+            <span class="card-window-chapter">// GDG UVCE</span>
+            <span class="card-window-track">[ 03 / JS ]</span>
+          </div>
         </div>
-      </li>
-      <li class="session-row reveal">
-        <span class="session-row__num session-row__num--green">04</span>
-        <div class="session-row__body">
-          <h3>Deployment</h3>
-          <p>Ship it to a real URL you can share.</p>
+      </div>
+
+      <!-- 04 Deployment (Pastel Green Matting) -->
+      <div class="session-matting session-matting--green reveal">
+        <div class="window-card session-card">
+          <div class="card-window-header">
+            <div class="window-controls" aria-hidden="true">
+              <span class="window-dot window-dot--red"></span>
+              <span class="window-dot window-dot--yellow"></span>
+              <span class="window-dot window-dot--green"></span>
+            </div>
+            <span class="card-window-tag">// 04_deploy.sh</span>
+          </div>
+          <div class="session-card__body">
+            <div class="session-card__meta">
+              <span class="code-pill code-pill--green">04 / GREEN</span>
+              <span class="code-pill code-pill--neutral">{ deploy }</span>
+            </div>
+            <h3 class="session-card__title">Version Control &amp; Live Deployment</h3>
+            <p class="session-card__desc">Push your code to GitHub and ship a live, production URL that you can share with friends and add to your portfolio.</p>
+            <div class="session-card__footer">
+              <code>git push origin main → live 🚀</code>
+            </div>
+          </div>
+          <div class="card-window-footer">
+            <span class="card-window-chapter">// GDG UVCE</span>
+            <span class="card-window-track">[ 04 / DEPLOY ]</span>
+          </div>
         </div>
-      </li>
-    </ol>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -140,8 +307,12 @@
 <section id="speakers" aria-label="Speakers">
   <div class="container">
     <div class="section-header">
-      <p class="eyebrow reveal">Who's teaching</p>
-      <h2 class="section-title reveal">Meet the speakers</h2>
+      <div class="section-header__tag">
+        <span class="code-pill code-pill--yellow reveal">// MENTORS</span>
+      </div>
+      <p class="eyebrow reveal">{ INSTRUCTORS }</p>
+      <h2 class="section-title type-headline-lg reveal">Meet the speakers</h2>
+      <p class="section-sub type-body-md reveal">Learn directly from community builders and peers who have shipped real projects.</p>
     </div>
     <div class="speaker-grid" id="speaker-grid"></div>
   </div>
@@ -150,28 +321,51 @@
 <!-- ============================ GAME ============================ -->
 <section id="game" aria-label="Catch the butterflies game">
   <div class="container game-module">
-    <div class="section-header">
-      <p class="eyebrow reveal">While you wait</p>
-      <h2 class="section-title reveal">Catch the butterflies</h2>
-      <p class="section-sub reveal">Tap as many as you can in 20 seconds.</p>
+    <div class="section-header reveal">
+      <div class="section-header__tag">
+        <span class="code-pill code-pill--green">// INTERACTIVE</span>
+      </div>
+      <p class="eyebrow">{ MINI-GAME }</p>
+      <h2 class="section-title type-headline-lg">Catch the butterflies</h2>
+      <p class="section-sub type-body-md">Tap as many as you can in 20 seconds before they fly off.</p>
     </div>
 
-    <div id="game-stage" class="reveal">
-      <canvas id="game-canvas"></canvas>
-
-      <div id="game-hud" hidden>
-        <span id="game-score">Score 0</span>
-        <span id="game-timer">20s</span>
+    <div class="window-card game-window reveal">
+      <div class="card-window-header">
+        <div class="window-controls" aria-hidden="true">
+          <span class="window-dot window-dot--red"></span>
+          <span class="window-dot window-dot--yellow"></span>
+          <span class="window-dot window-dot--green"></span>
+        </div>
+        <span class="card-window-tag">// butterflies_game.exe</span>
       </div>
 
-      <div id="game-start-screen" class="game-overlay">
-        <button id="game-start-btn" class="btn btn--primary" type="button">Start the hunt</button>
+      <div id="game-stage">
+        <canvas id="game-canvas"></canvas>
+
+        <div id="game-hud" hidden>
+          <span id="game-score" class="code-pill code-pill--blue">Score 0</span>
+          <span id="game-timer" class="code-pill code-pill--red">20s</span>
+        </div>
+
+        <div id="game-start-screen" class="game-overlay">
+          <span class="code-pill code-pill--yellow">// SPEED_CHALLENGE</span>
+          <h3 class="game-overlay-title">Catch the Butterflies</h3>
+          <p class="game-overlay-sub">Quick 20-second arcade test while waiting for the workshop.</p>
+          <button id="game-start-btn" class="btn btn--primary" type="button">Start the hunt ›</button>
+        </div>
+
+        <div id="game-end-screen" class="game-overlay" hidden>
+          <span class="code-pill code-pill--green">// ROUND_COMPLETE</span>
+          <p class="game-end-label">Final score</p>
+          <p id="game-final-score">0</p>
+          <button id="game-replay-btn" class="btn btn--secondary" type="button">Play again ↻</button>
+        </div>
       </div>
 
-      <div id="game-end-screen" class="game-overlay" hidden>
-        <p class="game-end-label">Final score</p>
-        <p id="game-final-score">0</p>
-        <button id="game-replay-btn" class="btn btn--secondary" type="button">Play again</button>
+      <div class="card-window-footer">
+        <span class="card-window-chapter">// GDG ON CAMPUS · UVCE</span>
+        <span class="card-window-track">[ MINI_GAME_ARCADE ]</span>
       </div>
     </div>
   </div>
@@ -180,13 +374,35 @@
 <!-- ============================ ABOUT ============================ -->
 <section id="about" aria-label="About GDG UVCE">
   <div class="container">
-    <div class="about-layout">
-      <img class="about-logo reveal" src="assets/logo.jpeg" alt="GDG UVCE logo" width="52" height="52" />
-      <div class="section-header" style="margin-bottom: 0;">
-        <p class="eyebrow reveal">About</p>
-        <h2 class="section-title reveal">About GDG UVCE</h2>
+    <div class="window-card about-card reveal">
+      <div class="card-window-header">
+        <div class="window-controls" aria-hidden="true">
+          <span class="window-dot window-dot--red"></span>
+          <span class="window-dot window-dot--yellow"></span>
+          <span class="window-dot window-dot--green"></span>
+        </div>
+        <span class="card-window-tag">// gdg_uvce_chapter.md</span>
       </div>
-      <p class="about-text reveal" id="about-text"></p>
+      <div class="about-card__body">
+        <div class="about-card__header">
+          <img class="about-logo" src="assets/logo.jpeg" alt="GDG UVCE logo" width="52" height="52" />
+          <div>
+            <span class="code-pill code-pill--neutral">// CHAPTER OVERVIEW</span>
+            <h2 class="section-title type-headline-lg">About GDG on Campus UVCE</h2>
+          </div>
+        </div>
+        <p class="about-text" id="about-text"></p>
+        <div class="about-tags">
+          <span class="btn--code code-pill code-pill--blue">{ Web Development }</span>
+          <span class="btn--code code-pill code-pill--green">{ Cloud &amp; DevOps }</span>
+          <span class="btn--code code-pill code-pill--yellow">{ AI &amp; Machine Learning }</span>
+          <span class="btn--code code-pill code-pill--red">{ Open Source }</span>
+        </div>
+      </div>
+      <div class="card-window-footer">
+        <span class="card-window-chapter">// GDG ON CAMPUS · UVCE</span>
+        <span class="card-window-track">[ CHAPTER_PROFILE ]</span>
+      </div>
     </div>
   </div>
 </section>
@@ -194,17 +410,32 @@
 <!-- ============================ BOTTOM CTA ============================ -->
 <section id="cta" aria-label="Join us">
   <div class="container">
-    <div class="section-header reveal">
-      <p class="eyebrow">Last step</p>
-      <h2 class="section-title">Ready to build your first website?</h2>
-    </div>
-    <div class="btn-row cta-row reveal">
-      <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
-        Claim your seat
-      </a>
-      <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
-        Join on WhatsApp
-      </a>
+    <div class="window-card cta-card reveal">
+      <div class="card-window-header">
+        <div class="window-controls" aria-hidden="true">
+          <span class="window-dot window-dot--red"></span>
+          <span class="window-dot window-dot--yellow"></span>
+          <span class="window-dot window-dot--green"></span>
+        </div>
+        <span class="card-window-tag">// register_now.sh</span>
+      </div>
+      <div class="cta-card__body">
+        <span class="code-pill code-pill--blue">// LAST STEP</span>
+        <h2 class="section-title type-headline-lg">Ready to build your first website?</h2>
+        <p class="section-sub type-body-md">Claim your seat today, bring your laptop, and walk away with your own deployed website.</p>
+        <div class="btn-row cta-row">
+          <a class="btn btn--primary js-register-btn" href="#" target="_blank" rel="noopener noreferrer">
+            Claim your seat <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn--secondary js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+            Join on WhatsApp <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="card-window-footer">
+        <span class="card-window-chapter">// GDG ON CAMPUS · UVCE</span>
+        <span class="card-window-track">[ REGISTRATION_PORTAL ]</span>
+      </div>
     </div>
   </div>
 </section>
@@ -214,30 +445,34 @@
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer">
   <div class="container site-footer__inner">
-    <div>
+    <div class="site-footer__brand-block">
       <div class="site-footer__brand">
-        <img src="assets/logo.jpeg" alt="" width="28" height="28" />
+        <img src="assets/logo.jpeg" alt="" width="32" height="32" />
         <span>GDG UVCE</span>
       </div>
-      <p class="site-footer__tagline">The student-led chapter of Google Developer Groups at UVCE.</p>
+      <p class="site-footer__tagline">The student-led chapter of Google Developer Groups at University Visvesvaraya College of Engineering.</p>
+      <div class="site-footer__meta">
+        <span class="code-pill code-pill--neutral">// Bengaluru, Karnataka</span>
+      </div>
     </div>
     <div class="site-footer__links">
       <div class="site-footer__col">
-        <h4>Workshop</h4>
+        <h4>// Workshop</h4>
         <a href="#learn">What you'll learn</a>
-        <a href="#speakers">Speakers</a>
-        <a href="#game">Mini-game</a>
+        <a href="#speakers">Meet the speakers</a>
+        <a href="#game">Arcade mini-game</a>
       </div>
       <div class="site-footer__col">
-        <h4>Join us</h4>
-        <a class="js-register-btn" href="#" target="_blank" rel="noopener noreferrer">Register</a>
+        <h4>// Community</h4>
+        <a class="js-register-btn" href="#" target="_blank" rel="noopener noreferrer">Register for workshop</a>
         <a class="js-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">WhatsApp community</a>
+        <a href="#about">About GDG UVCE</a>
       </div>
     </div>
   </div>
   <div class="container site-footer__bottom">
-    <p>&copy; 2026 GDG on Campus, UVCE.</p>
-    <p>Website developed by <span id="dev-name">[Your Name]</span></p>
+    <p>&copy; 2026 GDG on Campus, UVCE. All rights reserved.</p>
+    <p class="site-footer__dev">Website developed by <span id="dev-name">[Your Name]</span></p>
   </div>
 </footer>
 
