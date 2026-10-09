@@ -807,31 +807,31 @@ section {
 }
 
 .intro-svg--globe {
-  top: 24%;
+  top: 18%;
   left: 50%;
   margin-left: -60px;
   margin-top: -55px;
 }
 
 .intro-svg--slash {
-  top: 32%;
-  left: 20%;
+  top: 26%;
+  left: 16%;
 }
 
 .intro-svg--asterisk {
-  top: 30%;
-  right: 22%;
+  top: 26%;
+  right: 16%;
 }
 
 .intro-svg--brace-left {
-  top: 50%;
-  left: 14%;
+  top: 48%;
+  left: 12%;
   margin-top: -55px;
 }
 
 .intro-svg--brace-right {
-  top: 50%;
-  right: 14%;
+  top: 48%;
+  right: 12%;
   margin-top: -55px;
 }
 
@@ -841,40 +841,40 @@ section {
 }
 
 .intro-geom--blue-pill {
-  top: 18%;
+  top: 15%;
   left: 18%;
 }
 
 .intro-geom--yellow-stadium {
-  bottom: 20%;
-  right: 18%;
+  bottom: 18%;
+  right: 14%;
 }
 
 .intro-geom--green-pill {
-  bottom: 22%;
-  left: 22%;
+  bottom: 18%;
+  left: 14%;
 }
 
 .intro-geom--red-blob {
-  top: 18%;
+  top: 15%;
   right: 18%;
 }
 
 .intro-geom--arrow {
-  bottom: 14%;
+  bottom: 11%;
   left: 50%;
   margin-left: -70px;
 }
 
 .intro-geom--dots {
-  top: 14%;
+  top: 11%;
   left: 50%;
   margin-left: -45px;
 }
 
 .intro-geom--arches {
-  bottom: 28%;
-  right: 25%;
+  bottom: 24%;
+  right: 26%;
 }
 
 /* Scene 3: Sticker Stage */
